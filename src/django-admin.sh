@@ -1,0 +1,14 @@
+git clone -b django/mysql https://github.com/s0ran/web-app-prototype.git ${PROJECT_NAME};
+cd ${PROJECT_NAME};
+mv backend ${BACKEND_NAME};
+cd ${BACKEND_NAME};
+pipenv install;
+pipenv run django-admin startproject ${BACKEND_NAME} .;
+git remote remove origin;
+cd ../;
+NEW_SECRET_KEY=$(cat ${BACKEND_NAME}/${BACKEND_NAME}/settings.py|grep SECRET_KEY);
+FORMER_SECRET_KEY=$(cat example/settings.py|grep SECRET_KEY|sed -e 's/ //g');
+eval sed -e 's/{BACKEND_NAME}/$BACKEND_NAME/g' example/Dockerfile.development > ${BACKEND_NAME}/Dockerfile.development;
+eval sed -e 's/{BACKEND_NAME}/$BACKEND_NAME/g' example/docker-compose.development.yml > ./docker-compose.development.yml;
+eval sed -e 's/{BACKEND_NAME}/$BACKEND_NAME/g' example/settings.py > ${BACKEND_NAME}/${BACKEND_NAME}/settings.py;
+gsed -i"" "/SECRET_KEY/c ${NEW_SECRET_KEY}" ${BACKEND_NAME}/${BACKEND_NAME}/settings.py;
