@@ -12,3 +12,4 @@ eval sed -e 's/{BACKEND_NAME}/$BACKEND_NAME/g' example/Dockerfile.development > 
 eval sed -e 's/{BACKEND_NAME}/$BACKEND_NAME/g' example/docker-compose.development.yml > ./docker-compose.development.yml;
 eval sed -e 's/{BACKEND_NAME}/$BACKEND_NAME/g' example/settings.py > ${BACKEND_NAME}/${BACKEND_NAME}/settings.py;
 gsed -i"" "/SECRET_KEY/c ${NEW_SECRET_KEY}" ${BACKEND_NAME}/${BACKEND_NAME}/settings.py;
+rm -rf example;
