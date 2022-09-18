@@ -19,8 +19,8 @@ all:
 
 help:
 	@egrep "^# target:" [Mm]akefile
-
+s
 django-mysql:
-	PROJECT_DIR=${PROJECT_DIR} PROJECT_NAME=${PROJECT_NAME} BACKEND_NAME=${BACKEND_NAME} . ./src/django-admin.sh
+	PROJECT_DIR=${PROJECT_DIR} PROJECT_NAME=${PROJECT_NAME} BACKEND_NAME=${BACKEND_NAME} . ./src/django-mysql.sh
 
 
