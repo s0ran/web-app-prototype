@@ -1,3 +1,5 @@
 FROM golang:1.18
 
-WORKDIR /{PROJECT_NAME}/
+WORKDIR /{PROJECT_NAME}/backend
+COPY ./go.mod ./go.sum ./
+RUN go mod download
