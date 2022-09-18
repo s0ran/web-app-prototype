@@ -1,5 +1,5 @@
-.PHONY: all help django-mysql
-.DELETE_ON_ERROR: django-mysql
+.PHONY: all help django-mysql gin-base
+.DELETE_ON_ERROR: django-mysql	gin-base
 
 
 
@@ -19,8 +19,11 @@ all:
 
 help:
 	@egrep "^# target:" [Mm]akefile
-s
+
 django-mysql:
 	PROJECT_DIR=${PROJECT_DIR} PROJECT_NAME=${PROJECT_NAME} BACKEND_NAME=${BACKEND_NAME} . ./src/django-mysql.sh
+
+gin-base:
+	PROJECT_DIR=${PROJECT_DIR} PROJECT_NAME=${PROJECT_NAME} BACKEND_NAME=${BACKEND_NAME} . ./src/gin-base.sh
 
 
